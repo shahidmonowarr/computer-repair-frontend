@@ -1,13 +1,10 @@
 import {
   AlignLeftOutlined,
   AppstoreOutlined,
-  BoldOutlined,
   BookOutlined,
-  CloudServerOutlined,
-  CustomerServiceOutlined,
-  DiffOutlined,
-  FileSearchOutlined,
+  FileAddOutlined,
   FolderAddOutlined,
+  FolderOutlined,
   OrderedListOutlined,
   PlusCircleOutlined,
   PlusSquareOutlined,
@@ -17,7 +14,6 @@ import {
   UserOutlined,
   UserSwitchOutlined,
   UsergroupAddOutlined,
-  UsergroupDeleteOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import Link from "next/link";
@@ -27,10 +23,10 @@ export const sidebarItems = (role: string) => {
     {
       label: "Profile",
       key: "profile",
-      icon: <UsergroupAddOutlined />,
+      icon: <UserOutlined />,
       children: [
         {
-          label: <Link href={`/dashboard/profile`}>Account Profile</Link>,
+          label: <Link href={`/dashboard/profile`}>My Profile</Link>,
           icon: <UserOutlined />,
           key: `/${role}/profile`,
         },
@@ -38,7 +34,7 @@ export const sidebarItems = (role: string) => {
           label: (
             <Link href={`/dashboard/change-password`}>Change Password</Link>
           ),
-          icon: <UsergroupDeleteOutlined />,
+          icon: <SecurityScanOutlined />,
           key: `/${role}/change-password`,
         },
       ],
@@ -81,7 +77,7 @@ export const sidebarItems = (role: string) => {
     {
       label: "service management",
       key: "service-management",
-      icon: <CustomerServiceOutlined />,
+      icon: <FolderOutlined />,
       children: [
         {
           label: <Link href={`/dashboard/add-service`}>Add Service</Link>,
@@ -91,19 +87,19 @@ export const sidebarItems = (role: string) => {
         {
           label: <Link href={`/dashboard/service-lists`}>Service List</Link>,
           key: `/service-list`,
-          icon: <CloudServerOutlined />,
+          icon: <OrderedListOutlined />,
         },
       ],
     },
     {
       label: "booking management",
       key: "booking-management",
-      icon: <DiffOutlined />,
+      icon: <BookOutlined />,
       children: [
         {
           label: <Link href={`/dashboard/booking-list`}>Booking List</Link>,
           key: `/booking-list`,
-          icon: <FileSearchOutlined />,
+          icon: <OrderedListOutlined />,
         },
       ],
     },
@@ -115,7 +111,7 @@ export const sidebarItems = (role: string) => {
         {
           label: <Link href={`/dashboard/add-blog`}>Add Blog</Link>,
           key: `/add-blog`,
-          icon: <BoldOutlined />,
+          icon: <FileAddOutlined />,
         },
         {
           label: <Link href={`/dashboard/blog-lists`}>Blog List</Link>,

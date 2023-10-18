@@ -4,26 +4,24 @@ import { useState } from "react";
 
 import { sidebarItems } from "@/constants/sidebarMenuItems";
 import { getUserInfo } from "@/services/auth.service";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
 
 const { Sider } = Layout;
 
 const DashboardSidebar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   const { role } = getUserInfo() as any;
 
   return (
     <div className="relative   ">
       <Sider
+        collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
         width={280}
-        className="shadow-lg shadow-purple-200 "
+        className="shadow-lg  shadow-slate-800"
         style={{
-          background: "#fff",
+          background: "white",
           overflow: "auto",
           height: "100vh",
           position: "sticky",
@@ -35,10 +33,10 @@ const DashboardSidebar: React.FC = () => {
       >
         <div
           style={{
-            color: "white",
+            color: "blue",
             fontSize: "2rem",
             textAlign: "center",
-            fontWeight: "bold",
+            fontWeight: "extra-bold",
             marginBottom: "1rem",
           }}
         >

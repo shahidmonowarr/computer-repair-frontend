@@ -28,14 +28,14 @@ const Sidebar = () => {
     >
       <div
         style={{
-          color: "white",
+          color: "blue",
           fontSize: "2rem",
           textAlign: "center",
           fontWeight: "bold",
           marginBottom: "1rem",
         }}
       >
-        UMS
+        PULSEpc
       </div>
       <Menu
         theme="dark"
