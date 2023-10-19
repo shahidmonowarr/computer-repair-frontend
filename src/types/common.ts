@@ -55,3 +55,9 @@ export type IBlogType = {
     profileImage: string;
   };
 };
+
+export type FaqType = {
+  key: string;
+  label: string;
+  children: JSX.Element | any;
+};

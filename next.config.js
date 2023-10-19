@@ -6,6 +6,7 @@ const nextConfig = {
       "images.unsplash.com",
       "i.ibb.co",
       "user-images.githubusercontent.com",
+      "askproject.net",
     ],
   },
 };
