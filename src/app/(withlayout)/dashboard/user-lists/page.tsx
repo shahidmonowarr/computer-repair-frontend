@@ -226,11 +226,11 @@ const UserList = () => {
         />
 
         <div className="mt-5">
-          <ActionBar title="Admin Lists">
+          <ActionBar title="User Lists">
             <Input
               type="text"
               size="large"
-              placeholder="Search by name, email, role..."
+              placeholder="Search..."
               style={{
                 width: "30%",
               }}

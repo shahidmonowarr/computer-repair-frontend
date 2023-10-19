@@ -12,9 +12,18 @@ const categoryApi = baseApi.injectEndpoints({
       providesTags: [tagTypes.service],
     }),
 
+    // Get Service By Id
+    getSingleService: builder.query({
+      query: (id) => ({
+        url: `${SERVICE_API}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.service],
+    }),
+
     // Create Service
     createService: builder.mutation({
-      query: (data) => ({
+      query: (data: any) => ({
         url: `${SERVICE_API}/create`,
         method: "POST",
         data: data,
@@ -45,6 +54,7 @@ const categoryApi = baseApi.injectEndpoints({
 export const {
   useCreateServiceMutation,
   useGetAllServicesQuery,
+  useGetSingleServiceQuery,
   useDeleteServiceMutation,
   useUpdateServiceMutation,
 } = categoryApi;

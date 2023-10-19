@@ -31,3 +31,12 @@ export type ISubMenuType = {
   name: string;
   link: string;
 };
+
+export type IServiceTypes = {
+  serviceId: string;
+  serviceName: string;
+  description: string;
+  serviceImage: string;
+  servicePrice: number;
+  serviceStatus: string;
+};

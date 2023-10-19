@@ -28,7 +28,7 @@ const DashboardSidebar: React.FC = () => {
           left: 0,
           top: 0,
           bottom: 0,
-          borderRadius: "40px 0px 0px 40px ",
+          borderRadius: "0 0 0 1rem",
         }}
       >
         <div
