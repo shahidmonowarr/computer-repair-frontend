@@ -18,7 +18,7 @@ type SelectFieldProps = {
   loading?: boolean;
   defaultValue?: SelectOptions;
   handleChange?: (el: string) => void;
-  setIsRoleIsDoctor?: (el: boolean) => void;
+  setIsRoleTechnician?: (el: boolean) => void;
 };
 
 const FormSelectField = ({
