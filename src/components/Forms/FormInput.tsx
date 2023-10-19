@@ -3,14 +3,13 @@
 import { getErrorMessageByPropertyName } from "@/utils/schema-validator";
 import { Input } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
-
 interface IInput {
-  type?: string;
   name: string;
-  placeholder?: string;
+  type?: string;
   size?: "large" | "small";
   value?: string | string[] | undefined;
   id?: string;
+  placeholder?: string;
   validation?: object;
   label?: string;
   disabled?: boolean;
@@ -19,7 +18,7 @@ interface IInput {
 const FormInput = ({
   name,
   type,
-  size,
+  size = "large",
   value,
   id,
   placeholder,
@@ -36,7 +35,7 @@ const FormInput = ({
 
   return (
     <>
-      {label ? label : null}
+      <p className="py-2 ">{label ? label : null}</p>
       <Controller
         control={control}
         name={name}
@@ -53,21 +52,15 @@ const FormInput = ({
             <Input
               type={type}
               size={size}
-              placeholder={placeholder}
               disabled={disabled}
+              placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
             />
           )
         }
       />
-      <small
-        style={{
-          color: "red",
-        }}
-      >
-        {errorMessage}
-      </small>
+      <small style={{ color: "red" }}>{errorMessage}</small>
     </>
   );
 };
