@@ -38,16 +38,12 @@ const Header = () => {
       link: "/",
     },
     {
-      name: "About",
-      link: "/about",
-    },
-    {
       name: "Services",
       link: "/services",
     },
     {
-      name: "Contact",
-      link: "/contact",
+      name: "Blogs",
+      link: "/blogs",
     },
   ];
   const [userLogged, setUserLogged] = useState(false);
