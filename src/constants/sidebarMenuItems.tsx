@@ -30,13 +30,6 @@ export const sidebarItems = (role: string) => {
           icon: <UserOutlined />,
           key: `/${role}/profile`,
         },
-        {
-          label: (
-            <Link href={`/dashboard/change-password`}>Change Password</Link>
-          ),
-          icon: <SecurityScanOutlined />,
-          key: `/${role}/change-password`,
-        },
       ],
     },
   ];

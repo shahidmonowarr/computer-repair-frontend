@@ -33,14 +33,14 @@ const DashboardSidebar: React.FC = () => {
       >
         <div
           style={{
-            color: "blue",
+            color: "skyblue",
             fontSize: "2rem",
             textAlign: "center",
-            fontWeight: "extra-bold",
+            fontWeight: "bold",
             marginBottom: "1rem",
           }}
         >
-          PULSEpc
+          pulsePC
         </div>
         <Menu
           theme="light"
