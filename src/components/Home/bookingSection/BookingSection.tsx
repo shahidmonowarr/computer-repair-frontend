@@ -85,7 +85,7 @@ const BookingSection = () => {
         <Form submitHandler={bookingOnSubmit}>
           <div className="my-[12px] flex flex-col items-center justify-center gap-2 w-full">
             <div style={{ margin: "10px 0px", width: "100%" }}>
-              <FormDatePicker name="appointmentDate" label="Appointment Date" />
+              <FormDatePicker name="bookingDate" label="Booking Date" />
             </div>
             <div style={{ margin: "10px 0px", width: "100%" }}>
               <FormSelectField
@@ -93,7 +93,7 @@ const BookingSection = () => {
                 label="Booking Slot"
                 options={slotData?.map((c: any) => ({
                   label: c.slotTime,
-                  value: c.slotId,
+                  value: c.slotTime,
                 }))}
               />
             </div>
@@ -110,7 +110,7 @@ const BookingSection = () => {
           </div>
 
           <button type="submit" className="appointmentButton">
-            Make Appointment
+            Book
           </button>
         </Form>
       </div>
