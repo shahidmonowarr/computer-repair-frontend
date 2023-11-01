@@ -1,6 +1,6 @@
 const NewsLetter = () => {
   return (
-    <div className="mt-24 mx-auto md:px-6">
+    <div className="mt-24">
       <section className="mb-10">
         <div className="relative overflow-hidden bg-cover bg-no-repeat bg-[50%] bg-[url('https://mdbcdn.b-cdn.net/img/new/textures/full/66.jpg')] h-[300px]"></div>
         <div className="container px-6 md:px-12">

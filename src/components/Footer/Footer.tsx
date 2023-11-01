@@ -3,7 +3,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="bg-blue-100/80 font-sans dark:bg-gray-900">
-      <div className="container px-6 py-12 mx-auto">
+      <div className="container py-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-2">
             <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700 h-2" />
+        <hr className="my-4 border-gray-200 md:my-4 dark:border-gray-700 h-2" />
 
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="flex flex-1 gap-4 hover:cursor-pointer">
@@ -107,7 +107,7 @@ const Footer = () => {
             />
           </div>
         </div>
-        <p className="font-sans p-8 text-start md:text-center md:text-lg md:p-4">
+        <p className="font-sans p-3 text-start md:text-center md:text-lg md:p-4">
           © 2023 PulsePC Inc. All rights reserved.
         </p>
       </div>

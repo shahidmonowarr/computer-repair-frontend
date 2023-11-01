@@ -19,49 +19,6 @@ import { isLoggedIn } from "@/services/auth.service";
 import { IServiceTypes } from "@/types";
 import Image from "next/image";
 
-const faqs = [
-  {
-    question: "What format are these icons?",
-    answer:
-      "The icons are in SVG (Scalable Vector Graphic) format. They can be imported into your design tool of choice and used directly in code.",
-  },
-  {
-    question: "Can I use the icons at different sizes?",
-    answer:
-      "Yes. The icons are drawn on a 24 x 24 pixel grid, but the icons can be scaled to different sizes as needed. We don't recommend going smaller than 20 x 20 or larger than 64 x 64 to retain legibility and visual balance.",
-  },
-  // More FAQs...
-];
-const license = {
-  href: "#",
-  summary:
-    "For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.",
-  content: `
-    <h4>Overview</h4>
-    
-    <p>For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.</p>
-    
-    <ul role="list">
-    <li>You're allowed to use the icons in unlimited projects.</li>
-    <li>Attribution is not required to use the icons.</li>
-    </ul>
-    
-    <h4>What you can do with it</h4>
-    
-    <ul role="list">
-    <li>Use them freely in your personal and professional work.</li>
-    <li>Make them your own. Change the colors to suit your project or brand.</li>
-    </ul>
-    
-    <h4>What you can't do with it</h4>
-    
-    <ul role="list">
-    <li>Don't be greedy. Selling or distributing these icons in their original or modified state is prohibited.</li>
-    <li>Don't be evil. These icons cannot be used on websites or applications that promote illegal or immoral beliefs or activities.</li>
-    </ul>
-  `,
-};
-
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }

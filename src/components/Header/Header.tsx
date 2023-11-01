@@ -66,12 +66,12 @@ const Header = () => {
 
   return (
     <>
-      <header className=" border-b-2 borderColor bg-blue-100/80">
-        <div className="container py-2 px-6 mx-auto  flex gap-3 items-center justify-between ">
+      <header className=" container border-b-2 borderColor bg-blue-100/80">
+        <div className="py-2 px-6 max-w-7xl mx-auto  flex gap-3 items-center justify-between  ">
           {/* logo */}
           <Link href={"/"} className="md:w-full ">
-            <h1 className="text-2xl font-extrabold -webkit-text-stroke-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-violet-500">
-              PULSEpc
+            <h1 className="text-2xl font-extrabold text-transparent bg-clip-text bg-blue-500">
+              PulsePC
             </h1>
           </Link>
           {/* NavData */}

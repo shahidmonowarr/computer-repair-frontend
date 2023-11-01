@@ -32,7 +32,7 @@ const HighlightSection = () => {
       <div className="  max-w-7xl  mx-auto flex flex-col md:flex-row md:gap-3 gap-10  justify-between">
         {BannerData.map((data, i) => (
           <div
-            className="items-center gap-4 p-4 bg-[#5768ff] rounded-md "
+            className="items-center gap-4 p-4 bg-blue-400 rounded-md "
             key={i}
           >
             <Image

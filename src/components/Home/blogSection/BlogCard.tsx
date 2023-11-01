@@ -29,7 +29,7 @@ const BlogCard = ({ blog }: IType) => {
           <span className="font-bold"> {blog?.blogDescription}</span>
         </div>
         <div className="flex gap-8 justify-center">
-          <Link href={`/${blog?.blogId}`}>
+          <Link href={`/blogs/${blog?.blogId}`}>
             <Button className=" text-gray-900 " type="primary">
               <EyeOutlined style={{ fontSize: "20px" }} />
             </Button>
