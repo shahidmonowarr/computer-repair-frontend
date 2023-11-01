@@ -13,9 +13,11 @@ const FeedbackSection = () => {
   };
   return (
     <section className="text-gray-600 body-font relative  ">
-      <h2 className="text-2xl  font-semibold">Submit your Feedback here</h2>
+      <h2 className="mb-6 text-center text-3xl font-bold">
+        Give Us Your Feedback
+      </h2>
       <Form submitHandler={handleSubmit}>
-        <div className=" px-5 py-16 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
+        <div className=" px-5 py-12 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
           <div>
             <Image src={feedbackBro} alt="" />
           </div>
@@ -25,7 +27,7 @@ const FeedbackSection = () => {
               Feedback
             </h2>
             <p className="leading-relaxed mb-2 text-gray-600 text-[14px]">
-              Medic Need your feedback to improve our service. Please give us
+              Please give us your feedback and we will get back to you soon.
             </p>
 
             <FormInput
@@ -45,17 +47,12 @@ const FeedbackSection = () => {
             <Button
               htmlType="submit"
               type="primary"
-              className="text-white mt-[8px] bg-primary border-0  px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-              style={{
-                background: "#3F51B5",
-                color: "#fff",
-              }}
+              className="text-white mt-[8px] bg-blue-500 border-0  px-6 hover:bg-blue-600 rounded text-lg"
             >
               Submit
             </Button>
             <p className="text-xs text-gray-500 mt-3">
-              Medic provide free Hospital Services for clinics and health care
-              providers.
+              We will get back to you soon.
             </p>
           </div>
         </div>

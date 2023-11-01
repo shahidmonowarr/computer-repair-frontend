@@ -30,12 +30,9 @@ const ServiceSection = () => {
 
   return (
     <div className=" pb-[100px]">
-      <p className="text-primary text-center md:text-[20px] text-[16px] font-semibold">
-        Find Out Your Desire Service
-      </p>
-      <p className=" md:text-[45px] text-[35px] md:w-[550px] py-[30px] ">
-        Our Services
-      </p>
+      <h2 className="mb-12 text-center text-3xl font-bold">
+        Find the best service for you
+      </h2>
 
       <Spin spinning={isLoading && !isError} tip="Loading Services...">
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 justify-between">

@@ -25,11 +25,11 @@ const HighlightSection = () => {
   ];
 
   return (
-    <section className="   py-[50px] text-white font-inter ">
-      <h2 className="text-2xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl text-center">
-        Highlighted Services
+    <section className="py-[50px] font-inter ">
+      <h2 className="mb-12 text-center text-3xl font-bold">
+        What We Offer You
       </h2>
-      <div className="  max-w-7xl  mx-auto flex flex-col md:flex-row md:gap-3 gap-10  justify-between">
+      <div className="  max-w-7xl text-white mx-auto flex flex-col md:flex-row md:gap-3 gap-10  justify-between">
         {BannerData.map((data, i) => (
           <div
             className="items-center gap-4 p-4 bg-blue-400 rounded-md "

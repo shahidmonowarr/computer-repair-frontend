@@ -19,10 +19,8 @@ const BlogDetails = ({ params }: any) => {
                 <h2 className="mb-8 text-3xl font-bold">
                   {singleBlog?.blogTitle}
                 </h2>
-                <p className="mb-8 pb-2 text-neutral-500 dark:text-neutral-300 lg:pb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                  soluta corporis voluptate ab error quam dolores doloremque,
-                  quae consectetur.
+                <p className="mb-0 text-neutral-500 dark:text-neutral-300">
+                  {singleBlog?.blogDescription}
                 </p>
 
                 <div className="mx-auto mb-8 flex flex-col md:flex-row md:justify-around lg:justify-between">
@@ -80,10 +78,6 @@ const BlogDetails = ({ params }: any) => {
                     Best experience
                   </p>
                 </div>
-
-                <p className="mb-0 text-neutral-500 dark:text-neutral-300">
-                  {singleBlog?.blogDescription}
-                </p>
               </div>
             </div>
 

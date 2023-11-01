@@ -39,13 +39,11 @@ const Faqs = () => {
 
   return (
     <section className="max-w-5xl mx-auto">
-      <section className="py-14">
-        <div className="flex justify-center px-4 mx-auto sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-            Frequently Asked Questions
-          </h2>
-        </div>
-      </section>
+      <div className="flex justify-center px-4 mx-auto sm:px-6 lg:px-8">
+        <h2 className="mb-12 text-center text-3xl font-bold">
+          Frequently Asked Questions
+        </h2>
+      </div>
 
       <Collapse
         bordered={false}

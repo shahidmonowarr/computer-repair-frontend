@@ -21,7 +21,7 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
   };
 
   return (
-    <div className="p-5 bg-white rounded-2xl border border-transparent shadow-lg">
+    <div className="p-5 bg-white rounded-lg border border-transparent shadow-lg">
       <div className="relative pb-48 overflow-hidden">
         <Image
           className="absolute h-full w-full"

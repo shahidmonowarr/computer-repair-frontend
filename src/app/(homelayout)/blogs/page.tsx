@@ -2,7 +2,7 @@ import BlogSection from "@/components/Home/blogSection/BlogSection";
 
 const page = () => {
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto max-w-7xl p-6">
       <BlogSection />
     </div>
   );

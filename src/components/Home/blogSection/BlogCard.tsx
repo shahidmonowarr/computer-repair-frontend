@@ -12,7 +12,7 @@ type IType = {
 
 const BlogCard = ({ blog }: IType) => {
   return (
-    <div className="p-5 bg-white rounded-2xl border border-transparent shadow-lg">
+    <div className="p-5 bg-white rounded-lg border border-transparent shadow-lg">
       <div className="relative pb-48 overflow-hidden">
         <Image
           className="absolute h-full w-full"
@@ -26,7 +26,7 @@ const BlogCard = ({ blog }: IType) => {
       <div className="p-4 border-t border-b">
         <h2 className="mb-2 text-lg uppercase font-bold">{blog?.blogTitle}</h2>
         <div className="mt-2 flex items-center">
-          <span className="font-bold"> {blog?.blogDescription}</span>
+          <p className="mb-2"> {blog?.blogDescription}</p>
         </div>
         <div className="flex gap-8 justify-center">
           <Link href={`/blogs/${blog?.blogId}`}>

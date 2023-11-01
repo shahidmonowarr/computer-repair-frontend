@@ -10,12 +10,9 @@ const BlogSection = () => {
 
   return (
     <div className=" pb-[100px]">
-      <p className="text-primary text-center md:text-[20px] text-[16px] font-semibold">
-        Find Out Your Desire Blogs
-      </p>
-      <p className=" md:text-[45px] text-[35px] md:w-[550px] py-[30px] ">
-        Blogs
-      </p>
+      <h2 className="mb-12 text-center text-3xl font-bold">
+        Find the best blog for you
+      </h2>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 justify-between">
         {data?.map((blog: IBlogType) => (

@@ -74,12 +74,9 @@ const BookingSection = () => {
   return (
     <div className="common md:flex gap-10 items-center mb-[60px]">
       <div className="font-inter my-[20px] md:my-0 flex flex-col md:h-[400px] justify-around ">
-        <p className="text-primary md:text-[20px] text-[16px] font-semibold">
-          Booking
-        </p>
-        <p className="font-poppins md:text-[45px] text-[35px] md:w-[550px]">
+        <h2 className="mb-12 text-center text-3xl font-bold">
           Book Your Schedule
-        </p>
+        </h2>
         <p className="md:w-[500px] text-gray-[400px] font-poppins text-gray-500"></p>
 
         <Form submitHandler={bookingOnSubmit}>
