@@ -2,17 +2,19 @@
 "use client";
 
 import { authKey } from "@/constants/common";
+import { USER_ROLE } from "@/constants/role";
 import {
   getUserInfo,
   isLoggedIn,
   removeUserInfo,
 } from "@/services/auth.service";
 import { IHeaderType } from "@/types";
-import { AppstoreOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import AddToCard from "../addToCart/AddToCart";
 import NavbarMenu from "./NavbarMenu";
 
 const Header = () => {
@@ -49,8 +51,10 @@ const Header = () => {
   const [userLogged, setUserLogged] = useState(false);
 
   const userLoggedIn = isLoggedIn();
+
   const { role, email, profileId, userId } = getUserInfo() as any;
 
+  const [isCardOpen, setIsCardOpen] = useState(false);
   useEffect(() => {
     if (userLoggedIn) {
       setUserLogged(true);
@@ -108,10 +112,21 @@ const Header = () => {
                 ))}
               </Drawer>
             </>
-            {/* user */}{" "}
+
             <div>
               {userLogged ? (
                 <div className="flex gap-5 items-center w-full justify-end">
+                  <div className="hidden md:flex items-center gap-2 cursor-pointer ">
+                    {role === USER_ROLE.USER && (
+                      <button
+                        onClick={() => setIsCardOpen(true)}
+                        className="text-gray-700 flex justify-between w-full px-2 py-2 text-sm leading-5 text-left hover:bg-gray-300 hover:text-black rounded "
+                        role="menuitem"
+                      >
+                        <ShoppingCartOutlined style={{ fontSize: "20px" }} />
+                      </button>
+                    )}
+                  </div>
                   <div className="hidden md:flex items-center gap-2 cursor-pointer ">
                     <p>{role}</p>
                   </div>
@@ -173,6 +188,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+      {userLogged && <AddToCard setOpen={setIsCardOpen} open={isCardOpen} />}
     </>
   );
 };

@@ -5,7 +5,7 @@ import { addToCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { IServiceTypes } from "@/types";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,6 +18,11 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
 
   const handleAddToCart = (addedService: IServiceTypes) => {
     dispatch(addToCart(addedService));
+
+    //show toast
+    if (!!addedService) {
+      message.success("Service added to cart successfully!");
+    }
   };
 
   return (
