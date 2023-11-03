@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
+import bookingImg from "@/assets/images/booking.png";
 import Form from "@/components/Forms/Form";
 import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormSelectField from "@/components/Forms/FormSelectedField";
@@ -12,6 +13,7 @@ import { useGetSlotsQuery } from "@/redux/features/slotApi";
 import { isLoggedIn } from "@/services/auth.service";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { Button, Modal, message } from "antd";
+import Image from "next/image";
 const { confirm } = Modal;
 
 const BookingSection = () => {
@@ -59,11 +61,10 @@ const BookingSection = () => {
       try {
         const res: any = await createBooking(BookingData);
 
-        if (res?.data) {
+        if (!!res?.data) {
           message.success(
-            "Slot added on your booking.admin will verified and confirm your booking"
+            "Booking Added Successfully To This Slot. Please Check Your Dashboard if you want to cancel it"
           );
-          console.log("book added", res?.data);
         }
       } catch (error: any) {
         console.error(error);
@@ -73,50 +74,51 @@ const BookingSection = () => {
   };
 
   return (
-    <div className="common md:flex gap-10 items-center mb-[60px]">
-      <div className="font-inter my-[20px] md:my-0 flex flex-col md:h-[400px] justify-around ">
-        <h2 className="mb-12 text-center text-3xl font-bold">
-          Book Your Schedule
-        </h2>
-        <p className="md:w-[500px] text-gray-[400px] font-poppins text-gray-500"></p>
+    <section className="text-gray-600 body-font relative  ">
+      <h2 className="mb-6 text-center text-3xl font-bold">
+        Book Your Schedule
+      </h2>
 
-        <Form submitHandler={bookingOnSubmit}>
-          <div className="my-[12px] flex flex-col items-center justify-center gap-2 w-full">
-            <div style={{ margin: "10px 0px", width: "100%" }}>
-              <FormDatePicker name="bookingDate" label="Booking Date" />
-            </div>
-            <div style={{ margin: "10px 0px", width: "100%" }}>
-              <FormSelectField
-                name="slot.slotId"
-                label="Booking Slot"
-                options={slotData?.map((c: any) => ({
-                  label: c.slotTime,
-                  value: c.slotId,
-                }))}
-              />
-            </div>
-            <div style={{ margin: "10px 0px", width: "100%" }}>
-              <FormSelectField
-                name="service.serviceId"
-                label="Service Name"
-                options={serviceData?.map((c: any) => ({
-                  label: c.serviceName,
-                  value: c.serviceId,
-                }))}
-              />
-            </div>
+      <Form submitHandler={bookingOnSubmit}>
+        <div className=" px-5 py-12 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
+          <div className=" bg-white rounded-lg my-auto p-6 flex flex-col  z-5 shadow-md">
+            <h2 className="text-gray-900 text-xl mb-1 font-medium title-font">
+              FillUp The Form
+            </h2>
+            <p className="leading-relaxed mb-2 text-gray-600 text-[14px]">
+              Please Fill Up The Form To Book Your Schedule
+            </p>
+            <FormDatePicker name="bookingDate" label="Booking Date" />
+            <FormSelectField
+              name="slot.slotId"
+              label="Booking Slot"
+              options={slotData?.map((c: any) => ({
+                label: c.slotTime,
+                value: c.slotId,
+              }))}
+            />
+            <FormSelectField
+              name="service.serviceId"
+              label="Service Name"
+              options={serviceData?.map((c: any) => ({
+                label: c.serviceName,
+                value: c.serviceId,
+              }))}
+            />
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="bg-blue-500 mt-[8px] px-6 text-white"
+            >
+              Book
+            </Button>
           </div>
-
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="bg-blue-500 text-white"
-          >
-            Book
-          </Button>
-        </Form>
-      </div>
-    </div>
+          <div>
+            <Image src={bookingImg} alt="" />
+          </div>
+        </div>
+      </Form>
+    </section>
   );
 };
 

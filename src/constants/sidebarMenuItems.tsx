@@ -2,6 +2,7 @@ import {
   AlignLeftOutlined,
   AppstoreOutlined,
   BookOutlined,
+  DiffOutlined,
   FileAddOutlined,
   FolderAddOutlined,
   FolderOutlined,
@@ -95,11 +96,16 @@ export const sidebarItems = (role: string) => {
           icon: <BookOutlined />,
         },
         {
-          label: <Link href={`/dashboard/booking-list`}>Booking List</Link>,
+          label: <Link href={`/dashboard/booking-lists`}>Booking List</Link>,
           key: `/booking-list`,
           icon: <OrderedListOutlined />,
         },
       ],
+    },
+    {
+      label: <Link href={`/dashboard/feedback-lists`}>Feedbacks</Link>,
+      key: "feedback-list",
+      icon: <DiffOutlined />,
     },
     {
       label: "Content Management",

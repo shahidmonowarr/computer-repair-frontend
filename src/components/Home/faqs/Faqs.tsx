@@ -38,21 +38,24 @@ const Faqs = () => {
   }
 
   return (
-    <section className="max-w-5xl mx-auto">
+    <section className="max-w-7xl mx-auto">
       <div className="flex justify-center px-4 mx-auto sm:px-6 lg:px-8">
         <h2 className="mb-12 text-center text-3xl font-bold">
           Frequently Asked Questions
         </h2>
       </div>
-
-      <Collapse
-        bordered={false}
-        defaultActiveKey={["1"]}
-        expandIcon={({ isActive }) => (
-          <CaretRightOutlined rotate={isActive ? 90 : 0} />
-        )}
-        items={getItems(panelStyle, data)}
-      />
+      <div className="mx-auto mb-5 flex flex-wrap">
+        <div className="w-full items-center px-4 lg:w-1/2">
+          <Collapse
+            bordered={true}
+            defaultActiveKey={["1"]}
+            expandIcon={({ isActive }) => (
+              <CaretRightOutlined className="h-5" rotate={isActive ? 90 : 0} />
+            )}
+            items={getItems(panelStyle, data)}
+          />
+        </div>
+      </div>
     </section>
   );
 };

@@ -29,24 +29,32 @@ const HighlightSection = () => {
       <h2 className="mb-12 text-center text-3xl font-bold">
         What We Offer You
       </h2>
-      <div className="  max-w-7xl text-white mx-auto flex flex-col md:flex-row md:gap-3 gap-10  justify-between">
+      <div className="  max-w-7xl grid gap-6 lg:grid-cols-3">
         {BannerData.map((data, i) => (
           <div
-            className="items-center gap-4 p-4 bg-blue-400 rounded-md "
+            className="zoom relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20 bg-[50%] "
             key={i}
           >
             <Image
               src={data.image}
               alt="Picture of the author"
+              className="w-full align-middle transition duration-300 ease-linear"
               width={200}
               height={200}
-              className="bg-white rounded items-center"
             />
 
-            <div className="flex flex-col gap-2">
-              <h3 className="font-semibold text-[20px]">{data.title}</h3>
-              <p>{data.description}</p>
-            </div>
+            <a href="#!">
+              <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]">
+                <div className="flex h-full items-end justify-start">
+                  <h5 className="m-6 text-lg font-bold text-white">
+                    {data.title}
+                  </h5>
+                </div>
+              </div>
+              <div>
+                <div className="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,99.2%,0.15)]"></div>
+              </div>
+            </a>
           </div>
         ))}
       </div>

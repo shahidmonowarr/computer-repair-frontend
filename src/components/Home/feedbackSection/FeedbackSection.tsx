@@ -3,14 +3,26 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
 import FormTextArea from "@/components/Forms/FormTextArea";
-import { Button } from "antd";
+import { useCreateFeedBackMutation } from "@/redux/features/feedbackApi";
+import { Button, message } from "antd";
 import Image from "next/image";
 import feedbackBro from "../../../assets/images/Feedback-bro.png";
 
 const FeedbackSection = () => {
-  const handleSubmit = (values: any) => {
-    console.log(values);
+  const [createFeedBack, { isLoading, isError }] = useCreateFeedBackMutation();
+
+  const handleSubmit = async (data: any) => {
+    try {
+      const res: any = await createFeedBack(data);
+
+      if (!!res?.data) {
+        message.success("Feedback sent successfully");
+      }
+    } catch (error: any) {
+      message.error(error?.data?.message);
+    }
   };
+
   return (
     <section className="text-gray-600 body-font relative  ">
       <h2 className="mb-6 text-center text-3xl font-bold">
@@ -19,7 +31,7 @@ const FeedbackSection = () => {
       <Form submitHandler={handleSubmit}>
         <div className=" px-5 py-12 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
           <div>
-            <Image src={feedbackBro} alt="" />
+            <Image src={feedbackBro} alt="feedback" />
           </div>
 
           <div className=" bg-white rounded-lg p-6 flex flex-col  z-5 shadow-md">
@@ -38,7 +50,7 @@ const FeedbackSection = () => {
             />
 
             <FormTextArea
-              name="feedbackComment"
+              name="feedbackDescription"
               label="Message"
               placeholder="Enter Message"
               rows={10}
@@ -51,9 +63,6 @@ const FeedbackSection = () => {
             >
               Submit
             </Button>
-            <p className="text-xs text-gray-500 mt-3">
-              We will get back to you soon.
-            </p>
           </div>
         </div>
       </Form>
