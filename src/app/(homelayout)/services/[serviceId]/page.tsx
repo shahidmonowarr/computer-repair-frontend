@@ -42,8 +42,7 @@ const ServiceDetails = ({ params }: any) => {
       confirm({
         title: "Please Login First",
         icon: <ExclamationCircleFilled />,
-        content:
-          "You need to login first to give Review. Do you want to login?",
+        content: "Need to Login to Add Review. Do you want to login?",
         onOk() {
           return router.push("/login");
         },
@@ -61,7 +60,7 @@ const ServiceDetails = ({ params }: any) => {
 
         const res: any = await createRating(updateData);
 
-        if (res?.data) {
+        if (!!res?.data) {
           message.success("Review Added Successfully");
         }
       } catch (error: any) {
@@ -213,8 +212,6 @@ const ServiceDetails = ({ params }: any) => {
       </Spin>
       <div className=" ">
         <div className="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          {/* Product */}
-
           <div className="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
             <h3 className="sr-only">Customer Reviews</h3>
 

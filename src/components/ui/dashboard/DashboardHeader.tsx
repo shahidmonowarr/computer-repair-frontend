@@ -8,7 +8,7 @@ const DashboardHeader = () => {
       }}
       className="border-b px-5 py-2 sticky top-0 h-14 flex items-center  w-full z-10 bg-[#fff]"
     >
-      navbar
+      Dashboard
     </div>
   );
 };

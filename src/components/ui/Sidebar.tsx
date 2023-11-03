@@ -28,14 +28,14 @@ const Sidebar = () => {
     >
       <div
         style={{
-          color: "blue",
-          fontSize: "2rem",
+          fontSize: "1rem",
           textAlign: "center",
           fontWeight: "bold",
           marginBottom: "1rem",
         }}
+        className="text-blue-500"
       >
-        PULSEpc
+        PulsePC
       </div>
       <Menu
         theme="dark"
