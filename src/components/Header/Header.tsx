@@ -66,8 +66,8 @@ const Header = () => {
 
   return (
     <>
-      <header className=" container border-b-2 borderColor bg-blue-100/80">
-        <div className="py-2 px-6 max-w-7xl mx-auto  flex gap-3 items-center justify-between  ">
+      <header className="  border-b-2   bg-blue-100/80">
+        <div className="container mx-auto py-2 px-6 max-w-7xl  flex gap-3 items-center justify-center  ">
           {/* logo */}
           <Link href={"/"} className="md:w-full ">
             <h1 className="text-2xl font-extrabold text-transparent bg-clip-text bg-blue-500">

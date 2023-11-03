@@ -11,8 +11,10 @@ import ServiceSection from "@/components/Home/serviceSection/ServiceSection";
 export default function Home() {
   return (
     <div className="">
-      <div className="container">
-        <HeroSection />
+      <div className="mx-auto">
+        <div className="">
+          <HeroSection />
+        </div>
       </div>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">

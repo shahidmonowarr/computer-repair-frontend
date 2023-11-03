@@ -2,7 +2,7 @@ import ServiceSection from "@/components/Home/serviceSection/ServiceSection";
 
 const ServicesPage = () => {
   return (
-    <div className="container mx auto px-6 ">
+    <div className="container mx-auto max-w-7xl px-6 ">
       <ServiceSection />
     </div>
   );

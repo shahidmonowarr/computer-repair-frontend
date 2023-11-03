@@ -11,7 +11,7 @@ import { useGetAllServicesQuery } from "@/redux/features/serviceApi";
 import { useGetSlotsQuery } from "@/redux/features/slotApi";
 import { isLoggedIn } from "@/services/auth.service";
 import { ExclamationCircleFilled } from "@ant-design/icons";
-import { Modal, message } from "antd";
+import { Button, Modal, message } from "antd";
 const { confirm } = Modal;
 
 const BookingSection = () => {
@@ -32,13 +32,13 @@ const BookingSection = () => {
   const router = useRouter();
 
   const bookingOnSubmit = async (data: any) => {
-    const dateString = data?.appointmentDate?.$d;
+    const dateString = data?.bookingDate?.$d;
     const dateObject = new Date(dateString);
 
     const isoString = dateObject?.toISOString();
 
     const BookingData = {
-      appointmentDate: isoString,
+      bookingDate: isoString,
       slotId: data.slot.slotId,
       serviceId: data.service.serviceId,
     };
@@ -63,6 +63,7 @@ const BookingSection = () => {
           message.success(
             "Slot added on your booking.admin will verified and confirm your booking"
           );
+          console.log("book added", res?.data);
         }
       } catch (error: any) {
         console.error(error);
@@ -90,7 +91,7 @@ const BookingSection = () => {
                 label="Booking Slot"
                 options={slotData?.map((c: any) => ({
                   label: c.slotTime,
-                  value: c.slotTime,
+                  value: c.slotId,
                 }))}
               />
             </div>
@@ -106,9 +107,13 @@ const BookingSection = () => {
             </div>
           </div>
 
-          <button type="submit" className="appointmentButton">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="bg-blue-500 text-white"
+          >
             Book
-          </button>
+          </Button>
         </Form>
       </div>
     </div>

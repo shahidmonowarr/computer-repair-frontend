@@ -5,7 +5,7 @@ import heroImage from "../../assets/images/dashboard.png";
 const HeroSection = () => {
   return (
     <section className="dark:bg-gray-800 bg-blue-100/80 dark:text-gray-100">
-      <div className="container max-w-7xl flex flex-col justify-between py-6 mx-auto sm:py-12 lg:py-14 lg:flex-row lg:justify-between">
+      <div className="container max-w-7xl flex flex-col justify-center py-6 mx-auto sm:py-12 lg:py-14 lg:flex-row lg:justify-between">
         <div className="flex items-center justify-center">
           <Image
             className="object-cover w-full h-full"
