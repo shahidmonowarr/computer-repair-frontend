@@ -45,7 +45,7 @@ const AddServicePage = () => {
       <UMBreadCrumb
         items={[
           { label: `dashboard`, link: `/dashboard` },
-          { label: "Add Service", link: `/dashboard/service/add-service` },
+          { label: "Add Service", link: `/dashboard/add-service` },
         ]}
       />
       <div className="mt-3">
@@ -55,7 +55,6 @@ const AddServicePage = () => {
           </h1>
         </div>
         <Form submitHandler={serviceOnSubmit}>
-          {/* faculty information */}
           <div
             style={{
               border: "1px solid #d9d9d9",

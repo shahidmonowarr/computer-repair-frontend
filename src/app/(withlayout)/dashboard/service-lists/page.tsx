@@ -192,7 +192,7 @@ const ServiceList = () => {
             },
             {
               label: "Service Lists",
-              link: "/dashboard/service-list",
+              link: "/dashboard/service-lists",
             },
           ]}
         />
@@ -210,7 +210,7 @@ const ServiceList = () => {
               }}
             />
             <div>
-              <Link href="/dashboard/service/add-service">
+              <Link href="/dashboard/add-service">
                 <Button type="primary">Create</Button>
               </Link>
               {(!!sortBy || !!sortOrder || !!searchTerm) && (

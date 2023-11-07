@@ -23,7 +23,7 @@ const categoryApi = baseApi.injectEndpoints({
 
     // Create Service
     createService: builder.mutation({
-      query: (data: any) => ({
+      query: ({ data }) => ({
         url: `${SERVICE_API}/create`,
         method: "POST",
         data: data,

@@ -4,6 +4,9 @@ import ServiceCard from "@/components/ServiceCard/ServiceCard";
 import { useGetAllServicesQuery } from "@/redux/features/serviceApi";
 import { Spin } from "antd";
 import { useState } from "react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 const ServiceSection = () => {
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
@@ -35,10 +38,38 @@ const ServiceSection = () => {
       </h2>
 
       <Spin spinning={isLoading && !isError} tip="Loading Services...">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 justify-between">
-          {serviceData?.map((service: any, index: number) => (
-            <ServiceCard key={index} service={service} />
-          ))}
+        <div className="">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={2}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 5,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 5,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 5,
+              },
+            }}
+            className="mySwiper"
+          >
+            {serviceData?.map((service: any, index: number) => (
+              <SwiperSlide key={service.serviceId}>
+                <ServiceCard service={service} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Spin>
     </div>
