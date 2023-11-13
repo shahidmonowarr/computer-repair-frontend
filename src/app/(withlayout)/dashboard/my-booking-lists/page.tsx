@@ -10,11 +10,9 @@ import TableList from "@/components/ui/TableList";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import {
   useGetMyBookingQuery,
-  useUpdateBookingMutation,
+  useUpdateMyBookingStatusMutation,
 } from "@/redux/features/bookingApi";
-import { useGetAllServicesQuery } from "@/redux/features/serviceApi";
-import { useGetSlotsQuery } from "@/redux/features/slotApi";
-import { Button, Col, Input, Row, Select, message } from "antd";
+import { Button, Col, Row, message } from "antd";
 import dayjs from "dayjs";
 import { useState } from "react";
 
@@ -38,16 +36,11 @@ const MyBookingList = () => {
   // get data
   const { data, isLoading } = useGetMyBookingQuery(query);
 
-  const { data: slotData, isLoading: slotLoading } = useGetSlotsQuery("");
-
-  const { data: serviceData, isLoading: serviceLoading } =
-    useGetAllServicesQuery(query);
-
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editData, setEditData] = useState<any>(null);
 
-  const [updateBooking, { isLoading: deleteLoading, error }] =
-    useUpdateBookingMutation();
+  const [updateMyBookingStatus, { isLoading: deleteLoading }] =
+    useUpdateMyBookingStatusMutation();
 
   const handleEdit = async (updated: any) => {
     const dateString = updated?.bookingDate?.$d ?? updated?.bookingDate;
@@ -55,7 +48,6 @@ const MyBookingList = () => {
     const dateObject = new Date(dateString);
 
     // Get ISO string
-    const isoString = dateObject?.toISOString();
 
     const editedData = {
       bookingStatus: updated?.bookingStatus,
@@ -64,15 +56,13 @@ const MyBookingList = () => {
     const id = updated.bookingId;
 
     try {
-      const res: any = await updateBooking({ id, data: editedData });
+      const res: any = await updateMyBookingStatus({ id, data: editedData });
 
       if (res?.data) {
         message.success("Booking updated successfully");
         setIsEditModalOpen(false);
       }
     } catch (error: any) {
-      console.log(error, "booking errror");
-      console.error(error?.data);
       message.error(error?.data?.message);
     }
   };
@@ -124,18 +114,21 @@ const MyBookingList = () => {
       render: function (data: any) {
         return (
           <>
-            <Button
-              style={{
-                margin: "0px 5px",
-              }}
-              onClick={() => {
-                setIsEditModalOpen(true);
-                setEditData(data);
-              }}
-              type="primary"
-            >
-              <EditOutlined />
-            </Button>
+            {bookingStatus === "pending" && (
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                className="text-blue-500 hover:text-white"
+                onClick={() => {
+                  setIsEditModalOpen(true);
+                  setEditData(data);
+                }}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            )}
           </>
         );
       },
@@ -172,14 +165,14 @@ const MyBookingList = () => {
             link: "/dashboard",
           },
           {
-            label: "User-booking-list",
+            label: "my-booking-list",
             link: "/dashboard/booking/my-booking-lists",
           },
         ]}
       />
 
       <ActionBar title="Booking List">
-        <div className="flex gap-3">
+        {/* <div className="flex gap-3">
           <Input
             type="text"
             size="large"
@@ -199,7 +192,7 @@ const MyBookingList = () => {
             onChange={statusOnChange}
             options={status}
           />
-        </div>
+        </div> */}
       </ActionBar>
 
       <TableList
@@ -217,7 +210,7 @@ const MyBookingList = () => {
         <ModalForm
           open={isEditModalOpen}
           setOpen={setIsEditModalOpen}
-          title="Blog"
+          title="Booking Status"
           isLoading={deleteLoading}
         >
           <Form submitHandler={handleEdit} defaultValues={editData}>

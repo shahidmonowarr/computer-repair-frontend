@@ -35,6 +35,8 @@ const ServiceDetails = ({ params }: any) => {
   const { data: singleService, isLoading: singleServiceLoading } =
     useGetSingleServiceQuery(serviceId);
 
+  console.log("singleService", singleService);
+
   // review
 
   const handleReview = async (data: any) => {
@@ -107,17 +109,17 @@ const ServiceDetails = ({ params }: any) => {
     <section className="max-w-7xl mx-auto">
       {" "}
       <Spin tip="Loading" spinning={singleServiceLoading} size="large">
-        <div className="max-w-5xl  my-20 mx-auto grid grid-cols-3 gap-10 items-center">
-          <div className="col-span-1">
+        <div className="max-w-6xl  my-20 mx-auto grid grid-cols-7 gap-10 items-center">
+          <div className="col-span-4">
             <Image
               alt={singleService?.serviceName}
               src={singleService?.serviceImage}
-              height={80}
-              width={80}
-              className="w-full p-5 h-[350px] shadow-lg  object-cover object-center rounded-lg border "
+              height={500}
+              width={500}
+              className="shadow-lg object-center rounded-lg border w-[1360px] h-[380px]"
             />
           </div>
-          <div className="w-full col-span-2 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <div className="w-full col-span-3 lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
               Service Name
             </h2>
@@ -132,7 +134,7 @@ const ServiceDetails = ({ params }: any) => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  className="w-4 h-4 text-indigo-500"
+                  className="w-4 h-4 text-blue-500"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -143,7 +145,7 @@ const ServiceDetails = ({ params }: any) => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  className="w-4 h-4 text-indigo-500"
+                  className="w-4 h-4 text-blue-500"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -154,7 +156,7 @@ const ServiceDetails = ({ params }: any) => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  className="w-4 h-4 text-indigo-500"
+                  className="w-4 h-4 text-blue-500"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -165,7 +167,7 @@ const ServiceDetails = ({ params }: any) => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  className="w-4 h-4 text-indigo-500"
+                  className="w-4 h-4 text-blue-500"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -176,18 +178,18 @@ const ServiceDetails = ({ params }: any) => {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  className="w-4 h-4 text-indigo-500"
+                  className="w-4 h-4 text-blue-500"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
                 <span className="text-gray-600 ml-3">
-                  {singleService?._count?.reviewAndRatings} Reviews
+                  {singleService?.reviewAndRatings?.length} Reviews
                 </span>
               </span>
               <div className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
                 <span className="text-gray-600 ml-3">
-                  {singleService?._count?.appointmentBooked} Appointment Booked
+                  {singleService?.appointmentCount} Appointments
                 </span>
               </div>
             </div>
@@ -197,12 +199,12 @@ const ServiceDetails = ({ params }: any) => {
 
             <div className="flex mt-10 justify-between border-t pt-4 ">
               <span className="title-font font-medium text-2xl text-gray-900">
-                $ {singleService?.servicePrice}
+                {singleService?.servicePrice} BDT
               </span>
               <Button
                 onClick={() => handleAddToCart(singleService)}
                 type="primary"
-                className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none"
+                className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-blue-500 rounded hover:bg-blue-600 focus:bg-gray-400 focus:outline-none"
               >
                 Add to cart
               </Button>
@@ -211,10 +213,9 @@ const ServiceDetails = ({ params }: any) => {
         </div>
       </Spin>
       <div className=" ">
-        <div className="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h3 className="">Customer Reviews</h3>
           <div className="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
-            <h3 className="sr-only">Customer Reviews</h3>
-
             <div className="mt-2">
               <Form submitHandler={handleReview}>
                 <div className="flex items-center gap-3">
@@ -259,7 +260,7 @@ const ServiceDetails = ({ params }: any) => {
                           <img
                             src={
                               review?.profile?.profileImage ??
-                              "https://www.truckeradvisor.com/media/uploads/profilePics/notFound.jpg"
+                              "https://user-images.githubusercontent.com/522079/90506845-e8420580-e122-11ea-82ca-31087fc8486c.png"
                             }
                             alt=""
                             className="h-10 w-10 rounded-full bg-gray-100"
