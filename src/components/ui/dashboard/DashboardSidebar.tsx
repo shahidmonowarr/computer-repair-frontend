@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -5,6 +6,8 @@ import { useState } from "react";
 import { sidebarItems } from "@/constants/sidebarMenuItems";
 import { getUserInfo } from "@/services/auth.service";
 import { Layout, Menu } from "antd";
+import Image from "next/image";
+import Link from "next/link";
 
 const { Sider } = Layout;
 
@@ -31,17 +34,15 @@ const DashboardSidebar: React.FC = () => {
           borderRadius: "0 0 0 1rem",
         }}
       >
-        <div
-          style={{
-            fontSize: "1.5rem",
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-          }}
-          className="text-blue-500 my-3"
-        >
-          PulsePC
-        </div>
+        <Link href={"/"} className="md:w-full ">
+          <Image
+            className="max-h-[50px] mx-auto w-auto"
+            src="https://i.ibb.co/fqrVcQt/Untitled-3.png"
+            alt="logo"
+            width={200}
+            height={200}
+          />
+        </Link>
         <Menu
           theme="light"
           defaultSelectedKeys={["1"]}

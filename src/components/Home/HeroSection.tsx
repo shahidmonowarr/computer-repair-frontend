@@ -4,7 +4,7 @@ import heroImage from "../../assets/images/dashboard.png";
 
 const HeroSection = () => {
   return (
-    <section className="dark:bg-gray-800 bg-blue-100/80 dark:text-gray-100">
+    <section className=" bg-blue-100/80 dark:text-gray-100">
       <div className="container max-w-7xl flex flex-col justify-center py-6 mx-auto sm:py-12 lg:py-14 lg:flex-row lg:justify-between">
         <div className="flex items-center justify-center">
           <Image
@@ -16,10 +16,10 @@ const HeroSection = () => {
           />
         </div>
         <div className="flex flex-col justify-center text-center rounded-sm lg:max-w-lg xl:max-w-xl lg:text-left">
-          <h1 className="text-7xl pb-4 font-roboto font-extrabold sm:text-3xl md:text-5xl lg:text-5xl">
+          <h1 className="text-6xl pb-4 font-roboto font-extrabold sm:text-3xl md:text-5xl lg:text-5xl">
             PULSE PC <br />
-            <span className="dark:skyblue text-blue-500">A COMPLETE</span>{" "}
-            SOLUTION FOR YOUR <br /> COMPUTER
+            <span className="text-blue-500">A COMPLETE</span> SOLUTION FOR YOUR{" "}
+            <br /> COMPUTER
           </h1>
           <p className="mt-3 mb-4 px-1 sm:mb-5 text-sm">
             So IF you are looking for a PC SOLUTION THEN {""}
@@ -30,14 +30,14 @@ const HeroSection = () => {
             <a
               rel="noopener noreferrer"
               href="#"
-              className="px-8 py-3 text-lg font-semibold rounded dark:bg-blue-500 dark:text-gray-900 bg-blue-400 hover:bg-blue-600 hover:text-gray-100 dark:hover:bg-blue-600 dark:hover:text-gray-100"
+              className="px-8 py-3 text-lg font-semibold rounded   bg-blue-400 hover:bg-blue-600 hover:text-gray-100 dark:hover:bg-blue-600 dark:hover:text-gray-100"
             >
               Interested
             </a>
             <a
               rel="noopener noreferrer"
               href="#"
-              className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100 hover:bg-black hover:text-white dark:hover:bg-gray-100 dark:hover:text-gray-900"
+              className="px-8 py-3 text-lg font-semibold border rounded  hover:bg-black hover:text-white  "
             >
               Explore
             </a>

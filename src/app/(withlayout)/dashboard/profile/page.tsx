@@ -99,8 +99,8 @@ const Profile = () => {
                   myProfileResponse?.profile?.profileImage ??
                   "https://user-images.githubusercontent.com/522079/90506845-e8420580-e122-11ea-82ca-31087fc8486c.png"
                 }
-                className="w-[200px]  h-[200px]   object-cover object-center  rounded-full border shadow-xl"
-                alt=""
+                className="w-[200px]  h-[200px] object-center  rounded-full border shadow-xl"
+                alt="profile Image"
               />
             </div>
 

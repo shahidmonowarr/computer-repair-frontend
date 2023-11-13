@@ -3,6 +3,7 @@
 
 import { authKey } from "@/constants/common";
 import { USER_ROLE } from "@/constants/role";
+import { useGetMyProfileQuery } from "@/redux/features/users/userApi";
 import {
   getUserInfo,
   isLoggedIn,
@@ -11,6 +12,7 @@ import {
 import { IHeaderType } from "@/types";
 import { AppstoreOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -21,6 +23,14 @@ const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const router = useRouter();
+
+  const {
+    data: myProfileResponse,
+    isError,
+    isLoading,
+    isFetching,
+    error,
+  } = useGetMyProfileQuery(undefined);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -74,9 +84,11 @@ const Header = () => {
         <div className="container mx-auto py-2 px-6 max-w-7xl  flex gap-3 items-center justify-center  ">
           {/* logo */}
           <Link href={"/"} className="md:w-full ">
-            <h1 className="text-2xl font-extrabold text-transparent bg-clip-text bg-blue-500">
-              PulsePC
-            </h1>
+            <img
+              className="max-h-[50px] w-auto"
+              src="https://i.ibb.co/qNDc0xm/logo.png"
+              alt="logo"
+            />
           </Link>
           {/* NavData */}
           <div className="md:flex hidden gap-3 w-full justify-between ">
@@ -128,16 +140,19 @@ const Header = () => {
                     )}
                   </div>
                   <div className="hidden md:flex items-center gap-2 cursor-pointer ">
-                    <p>{role}</p>
+                    <p>{myProfileResponse?.profile?.firstName}</p>
                   </div>
                   <div className="relative inline-block text-left">
                     <button
                       onClick={handleDropdownToggle}
                       className="text-gray-700 focus:outline-none"
                     >
-                      <img
+                      <Image
                         className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                        src="https://user-images.githubusercontent.com/522079/90506845-e8420580-e122-11ea-82ca-31087fc8486c.png"
+                        src={
+                          myProfileResponse?.profile?.profileImage ??
+                          "https://user-images.githubusercontent.com/522079/90506845-e8420580-e122-11ea-82ca-31087fc8486c.png"
+                        }
                         alt=""
                         width={100}
                         height={100}
