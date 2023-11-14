@@ -47,6 +47,11 @@ export const sidebarItems = (role: string) => {
       icon: <PlusSquareOutlined />,
       key: `/${role}/reviews`,
     },
+    {
+      label: <Link href={`/dashboard/make-booking`}>Make Booking</Link>,
+      icon: <PlusSquareOutlined />,
+      key: `/${role}/bookings`,
+    },
   ];
 
   const adminSidebarItems: MenuProps["items"] = [

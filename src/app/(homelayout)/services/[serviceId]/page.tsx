@@ -18,6 +18,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { isLoggedIn } from "@/services/auth.service";
 import { IServiceTypes } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -109,7 +110,7 @@ const ServiceDetails = ({ params }: any) => {
     <section className="max-w-7xl mx-auto">
       {" "}
       <Spin tip="Loading" spinning={singleServiceLoading} size="large">
-        <div className="max-w-6xl  my-20 mx-auto grid grid-cols-7 gap-10 items-center">
+        <div className="max-w-6xl  my-10 mx-auto grid grid-cols-7 gap-10 items-center">
           <div className="col-span-4">
             <Image
               alt={singleService?.serviceName}
@@ -201,20 +202,32 @@ const ServiceDetails = ({ params }: any) => {
               <span className="title-font font-medium text-2xl text-gray-900">
                 {singleService?.servicePrice} BDT
               </span>
-              <Button
-                onClick={() => handleAddToCart(singleService)}
-                type="primary"
-                className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-blue-500 rounded hover:bg-blue-600 focus:bg-gray-400 focus:outline-none"
-              >
-                Add to cart
-              </Button>
+              <div className="flex justify-between">
+                <Link
+                  href={`/dashboard/select-booking/${singleService?.serviceId}`}
+                >
+                  <Button
+                    type="primary"
+                    className="px-2 me-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-blue-500 rounded hover:bg-blue-600 focus:bg-gray-400 focus:outline-none"
+                  >
+                    Book Now
+                  </Button>
+                </Link>
+                <Button
+                  onClick={() => handleAddToCart(singleService)}
+                  type="primary"
+                  className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-blue-500 rounded hover:bg-blue-600 focus:bg-gray-400 focus:outline-none"
+                >
+                  Add to cart
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </Spin>
       <div className=" ">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h3 className="">Customer Reviews</h3>
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-24 lg:px-8">
+          <h2 className="font-bold">Customer Reviews</h2>
           <div className="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
             <div className="mt-2">
               <Form submitHandler={handleReview}>

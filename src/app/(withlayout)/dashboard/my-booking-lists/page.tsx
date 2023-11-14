@@ -1,6 +1,6 @@
 "use client";
 
-import { EditOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
 import Form from "@/components/Forms/Form";
 import FormSelectField from "@/components/Forms/FormSelectedField";
@@ -9,10 +9,11 @@ import ActionBar from "@/components/ui/ActionBar";
 import TableList from "@/components/ui/TableList";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 import {
+  useDeleteBookingMutation,
   useGetMyBookingQuery,
   useUpdateMyBookingStatusMutation,
 } from "@/redux/features/bookingApi";
-import { Button, Col, Row, message } from "antd";
+import { Button, Col, Modal, Row, message } from "antd";
 import dayjs from "dayjs";
 import { useState } from "react";
 
@@ -39,8 +40,10 @@ const MyBookingList = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editData, setEditData] = useState<any>(null);
 
-  const [updateMyBookingStatus, { isLoading: deleteLoading }] =
+  const [updateMyBookingStatus, { isLoading: updateLoading }] =
     useUpdateMyBookingStatusMutation();
+  const [deleteBooking, { isLoading: deleteLoading }] =
+    useDeleteBookingMutation();
 
   const handleEdit = async (updated: any) => {
     const dateString = updated?.bookingDate?.$d ?? updated?.bookingDate;
@@ -66,6 +69,31 @@ const MyBookingList = () => {
       message.error(error?.data?.message);
     }
   };
+
+  const HandleDelete = async (id: string) => {
+    Modal.confirm({
+      title: "Confirm Deletion",
+      content: "Are you sure you want to delete this Booking?",
+      onOk: async () => {
+        message.loading("Deleting....");
+        try {
+          if (bookingStatus === "confirmed") {
+            message.error("You can not delete confirmed booking");
+            return;
+          } else {
+            await deleteBooking(id);
+            message.success("Your Booking Deleted Successfully");
+          }
+        } catch (err: any) {
+          message.error(err.data?.message);
+        }
+      },
+      onCancel: () => {
+        // Do nothing if the user clicks "No" in the modal
+      },
+    });
+  };
+
   const columns = [
     {
       title: "Full Name",
@@ -114,21 +142,13 @@ const MyBookingList = () => {
       render: function (data: any) {
         return (
           <>
-            {bookingStatus === "pending" && (
-              <Button
-                style={{
-                  margin: "0px 5px",
-                }}
-                className="text-blue-500 hover:text-white"
-                onClick={() => {
-                  setIsEditModalOpen(true);
-                  setEditData(data);
-                }}
-                type="primary"
-              >
-                <EditOutlined />
-              </Button>
-            )}
+            <Button
+              onClick={() => HandleDelete(data?.bookingId)}
+              type="primary"
+              danger
+            >
+              <DeleteOutlined />
+            </Button>
           </>
         );
       },
@@ -149,6 +169,7 @@ const MyBookingList = () => {
   const status = [
     { label: "Pending", value: "pending" },
     { label: "Cancelled", value: "cancelled" },
+    { label: "Confirmed", value: "confirmed" },
   ];
 
   const statusOnChange = (value: string) => {

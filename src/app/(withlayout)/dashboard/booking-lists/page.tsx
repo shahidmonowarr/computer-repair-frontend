@@ -9,14 +9,10 @@ import ActionBar from "@/components/ui/ActionBar";
 import TableList from "@/components/ui/TableList";
 import UMBreadCrumb from "@/components/ui/UMBreadCrumb";
 
-import FormDatePicker from "@/components/Forms/FormDatePicker";
-import FormInput from "@/components/Forms/FormInput";
 import {
   useGetBookingQuery,
-  useUpdateBookingMutation,
+  useUpdateMyBookingStatusMutation,
 } from "@/redux/features/bookingApi";
-import { useGetAllServicesQuery } from "@/redux/features/serviceApi";
-import { useGetSlotsQuery } from "@/redux/features/slotApi";
 import { Button, Col, Input, Row, Select, message } from "antd";
 import dayjs from "dayjs";
 import { useState } from "react";
@@ -29,7 +25,7 @@ const BookingList = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
-  const [bookingStatus, setbookingStatus] = useState<string>("");
+  const [bookingStatus, setBookingStatus] = useState<string>("");
 
   query["limit"] = size;
   query["page"] = page;
@@ -40,52 +36,35 @@ const BookingList = () => {
 
   // get data
   const { data, isLoading } = useGetBookingQuery(query);
-  console.log("data", data);
-
-  const { data: slotData, isLoading: slotLoading } =
-    useGetSlotsQuery(undefined);
-
-  const { data: serviceData, isLoading: serviceLoading } =
-    useGetAllServicesQuery(query);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editData, setEditData] = useState<any>(null);
 
-  const [updateBooking, { isLoading: deleteLoading }] =
-    useUpdateBookingMutation();
+  const [updateMyBookingStatus, { isLoading: updateLoading }] =
+    useUpdateMyBookingStatusMutation();
 
   const handleEdit = async (updated: any) => {
     const dateString = updated?.bookingDate?.$d ?? updated?.bookingDate;
-
-    console.log("updated", updated);
 
     const dateObject = new Date(dateString);
 
     // Get ISO string
     const isoString = dateObject?.toISOString();
 
-    const id = updated?.BookingId;
-
     const editedData = {
-      serviceId: updated?.service.serviceId,
-      firstName: updated?.profile.firstName,
-      phoneNumber: updated?.profile.phoneNumber,
-      bookingDate: isoString,
       bookingStatus: updated?.bookingStatus,
-      slotId: updated?.slot.slotId,
     };
 
-    console.log("booking id", id);
+    const id = updated?.bookingId;
 
     try {
-      const res = await updateBooking({ id, body: editedData }).unwrap();
+      const res: any = await updateMyBookingStatus({ id, data: editedData });
 
-      if (res) {
+      if (res?.data) {
         message.success("Booking updated successfully");
         setIsEditModalOpen(false);
       }
     } catch (error: any) {
-      console.error(error?.data);
       message.error(error?.data);
     }
   };
@@ -188,7 +167,7 @@ const BookingList = () => {
     setSortBy("");
     setSortOrder("");
     setFirstName("");
-    setbookingStatus("");
+    setBookingStatus("");
   };
 
   const status = [
@@ -198,7 +177,7 @@ const BookingList = () => {
   ];
 
   const statusOnChange = (value: string) => {
-    setbookingStatus(value);
+    setBookingStatus(value);
   };
 
   return (
@@ -268,8 +247,8 @@ const BookingList = () => {
         <ModalForm
           open={isEditModalOpen}
           setOpen={setIsEditModalOpen}
-          title="Blog"
-          isLoading={deleteLoading}
+          title="Booking Status"
+          isLoading={updateLoading}
         >
           <Form submitHandler={handleEdit} defaultValues={editData}>
             <div
@@ -289,46 +268,7 @@ const BookingList = () => {
               >
                 Booking information
               </p>
-
-              <Row gutter={{ xs: 24, xl: 24, lg: 24, md: 24 }}>
-                <Col span={8} style={{ margin: "10px 0" }}>
-                  <div style={{ margin: "10px 0px" }}>
-                    <FormInput
-                      size="large"
-                      name="profile.firstName"
-                      label="Full Name"
-                    />
-                  </div>
-                </Col>
-                <Col span={8} style={{ margin: "10px 0" }}>
-                  <div style={{ margin: "10px 0px" }}>
-                    <FormInput
-                      size="large"
-                      name="profile.phoneNumber"
-                      label="Contact No"
-                    />
-                  </div>
-                </Col>
-                <Col span={8} style={{ margin: "10px 0" }}>
-                  <div style={{ margin: "10px 0px" }}>
-                    <FormSelectField
-                      name="service.serviceId"
-                      label="Service Name"
-                      loading={serviceLoading}
-                      options={serviceData?.map((c: any) => ({
-                        label: c.serviceName,
-                        value: c.serviceId,
-                      }))}
-                    />
-                  </div>
-                </Col>
-              </Row>
               <Row gutter={{ xs: 24, xl: 12, lg: 12, md: 24 }}>
-                <Col span={8} style={{ margin: "10px 0" }}>
-                  <div style={{ margin: "10px 0px" }}>
-                    <FormDatePicker name="bookingDate" label="Booking Date" />
-                  </div>
-                </Col>
                 <Col span={8} style={{ margin: "10px 0" }}>
                   <div style={{ margin: "10px 0px" }}>
                     <FormSelectField
@@ -337,19 +277,6 @@ const BookingList = () => {
                       options={status.map((c: any) => ({
                         label: c.label,
                         value: c.value,
-                      }))}
-                    />
-                  </div>
-                </Col>
-                <Col span={8} style={{ margin: "10px 0" }}>
-                  <div style={{ margin: "10px 0px" }}>
-                    <FormSelectField
-                      name="slot.slotId"
-                      label="Booking Slot"
-                      loading={slotLoading}
-                      options={slotData?.map((c: any) => ({
-                        label: c.slotTime,
-                        value: c.slotId,
                       }))}
                     />
                   </div>
