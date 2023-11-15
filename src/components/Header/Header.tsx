@@ -11,7 +11,7 @@ import {
 } from "@/services/auth.service";
 import { IHeaderType } from "@/types";
 import { AppstoreOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Drawer } from "antd";
+import { Drawer, Dropdown } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -78,6 +78,21 @@ const Header = () => {
     router.push("/login");
   };
 
+  const items = [
+    {
+      key: "1",
+      label: <Link href={"/dashboard"}>Dashboard</Link>,
+    },
+    {
+      key: "2",
+      label: <Link href={"/dashboard/profile"}>Profile Settings</Link>,
+    },
+    {
+      key: "3",
+      label: <button onClick={() => handleLogout()}>Sign out</button>,
+    },
+  ];
+
   return (
     <>
       <header className="  border-b-2   bg-blue-100/80">
@@ -139,51 +154,43 @@ const Header = () => {
                       </button>
                     )}
                   </div>
-                  <div className="hidden md:flex items-center gap-2 cursor-pointer ">
-                    <p>{myProfileResponse?.profile?.firstName}</p>
-                  </div>
                   <div className="relative inline-block text-left">
-                    <button
-                      onClick={handleDropdownToggle}
-                      className="text-gray-700 focus:outline-none"
-                    >
-                      <Image
-                        className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                        src={
-                          myProfileResponse?.profile?.profileImage ??
-                          "https://user-images.githubusercontent.com/522079/90506845-e8420580-e122-11ea-82ca-31087fc8486c.png"
-                        }
-                        alt=""
-                        width={100}
-                        height={100}
-                      />
-                    </button>
-                    {isDropdownOpen && (
-                      <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg">
-                        <div className="py-1">
-                          <Link
-                            href="/dashboard/profile"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Profile Settings
-                          </Link>
-                          <Link
-                            href="/dashboard"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Dashboard
-                          </Link>
-                        </div>
-                        <div className="py-1">
-                          <button
-                            onClick={() => handleLogout()}
-                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            Sign out
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    <Dropdown menu={{ items }} placement="topLeft" arrow>
+                      <button
+                        type="button"
+                        className="group flex shrink-0 items-center rounded-lg transition mx-[10px]"
+                      >
+                        <span className="sr-only">Menu</span>
+                        <p className="me-2 hidden text-left text-sm sm:block">
+                          <span className="text-gray-500">
+                            {myProfileResponse?.profile?.firstName}{" "}
+                          </span>
+                        </p>
+                        <Image
+                          className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                          src={
+                            myProfileResponse?.profile?.profileImage ??
+                            "https://user-images.githubusercontent.com/522079/90506845-e8420580-e122-11ea-82ca-31087fc8486c.png"
+                          }
+                          alt=""
+                          width={100}
+                          height={100}
+                        />
+
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="ms-2 hidden h-5 w-5 text-gray-500 transition group-hover:text-gray-700 sm:block"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </Dropdown>
                   </div>
                 </div>
               ) : (

@@ -15,6 +15,7 @@ import {
 } from "@/redux/features/bookingApi";
 import { Button, Col, Modal, Row, message } from "antd";
 import dayjs from "dayjs";
+import Link from "next/link";
 import { useState } from "react";
 
 const MyBookingList = () => {
@@ -193,27 +194,14 @@ const MyBookingList = () => {
       />
 
       <ActionBar title="Booking List">
-        {/* <div className="flex gap-3">
-          <Input
-            type="text"
-            size="large"
-            placeholder="Search with Name"
-            style={{
-              width: "100%",
-            }}
-            onChange={(e) => {
-              setFirstName(e.target.value);
-            }}
-          />
-          <Select
-            showSearch
-            size="large"
-            placeholder="Select Status"
-            optionFilterProp="children"
-            onChange={statusOnChange}
-            options={status}
-          />
-        </div> */}
+        <Link href={`/dashboard/make-booking`}>
+          <Button
+            type="primary"
+            className="px-2 me-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-blue-500 rounded hover:bg-blue-600 focus:bg-gray-400 focus:outline-none"
+          >
+            Make A Booking
+          </Button>
+        </Link>
       </ActionBar>
 
       <TableList
