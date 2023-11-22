@@ -21,7 +21,6 @@ const AddBlogPage = () => {
     };
     try {
       const res = await createBlog(bloData);
-      console.log(res);
       // @ts-ignore
       if (res?.data && !isError) {
         message.success("Blog created successfully");

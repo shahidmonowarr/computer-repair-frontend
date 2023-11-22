@@ -175,7 +175,6 @@ const MyBookingList = () => {
 
   const statusOnChange = (value: string) => {
     setBookingStatus(value);
-    console.log(value);
   };
 
   return (

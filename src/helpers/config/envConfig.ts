@@ -7,5 +7,3 @@ export const getBaseUrl = (): string => {
 // export const getBaseUrl = (): string => {
 //   return "http://localhost:5005/api/v1";
 // };
-
-console.log("getBaseUrl", getBaseUrl());

@@ -20,10 +20,8 @@ const AddBooking = () => {
       slotTime: time,
     };
 
-    console.log(SlotData);
     try {
       const res: any = await createSlot(SlotData);
-      console.log(res);
 
       if (res?.data && !isError) {
         message.success("Slot created successfully");

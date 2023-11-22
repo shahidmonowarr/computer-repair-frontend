@@ -36,8 +36,6 @@ const ServiceDetails = ({ params }: any) => {
   const { data: singleService, isLoading: singleServiceLoading } =
     useGetSingleServiceQuery(serviceId);
 
-  console.log("singleService", singleService);
-
   // review
 
   const handleReview = async (data: any) => {

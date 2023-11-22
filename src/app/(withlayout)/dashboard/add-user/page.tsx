@@ -36,7 +36,6 @@ const AddUserPage = () => {
     message.loading("Creating...");
     try {
       const res = await registration(userData);
-      console.log(res);
       // @ts-ignore
       if (res?.data && !error) {
         message.success("User Created Successfully");

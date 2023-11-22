@@ -55,7 +55,6 @@ const BlogLists = () => {
       blogDescription: updated.blogDescription,
       blogImage: updated.blogImage,
     };
-    console.log(editedData);
 
     const id = updated.blogId;
 

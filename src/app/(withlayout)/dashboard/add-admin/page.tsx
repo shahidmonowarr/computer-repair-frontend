@@ -34,7 +34,6 @@ const AddAdminPage = () => {
 
     try {
       const res: any = await registration(data);
-      console.log(res);
       if (res?.data) {
         message.success(`${data?.role} created successfully!`);
         router.push("/dashboard/admin-lists");

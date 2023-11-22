@@ -30,8 +30,6 @@ const FeedBackList = () => {
   // get data
   const { data, isLoading } = useGetFeedBacksQuery({ ...query });
 
-  console.log("feedback", data);
-
   const [updateFeedback, { isLoading: deleteLoading }] =
     useUpdateFeedbackMutation();
 

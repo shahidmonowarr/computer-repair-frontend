@@ -25,16 +25,13 @@ const RegisterPage = () => {
   const onSubmit = async (data: any) => {
     try {
       const res = await registration(data).unwrap();
-      console.log(res.email);
       if (res?.email) {
         router.push("/login");
         message.success("Registration success.Please Login");
         reset();
       }
     } catch (error: any) {
-      console.log(error);
-      console.error(error?.data?.message);
-      message.error(error?.data?.message);
+      message.error(error?.message);
     }
   };
 

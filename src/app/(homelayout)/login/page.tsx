@@ -26,8 +26,9 @@ const LoginPage = () => {
 
       if (res?.accessToken) {
         storeUserInfo({ accessToken: res?.accessToken });
-        router.push("/");
         message.success("User logged in successfully!");
+        location.reload();
+        router.push("/");
       }
     } catch (error: any) {
       console.error(error?.data?.message);
@@ -113,7 +114,7 @@ const LoginPage = () => {
                     className="w-full"
                     size="large"
                     htmlType="submit"
-                    // loading={isLoading}
+                    loading={isLoading}
                   >
                     Login
                   </Button>

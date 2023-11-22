@@ -43,7 +43,7 @@ const SelectBookingPage = ({ params }: { params: any }) => {
     const BookingData = {
       bookingDate: isoString,
       slotId: data.slot.slotId,
-      serviceId: data.service.serviceId,
+      serviceId: id,
     };
 
     if (!userLoggedIn) {
