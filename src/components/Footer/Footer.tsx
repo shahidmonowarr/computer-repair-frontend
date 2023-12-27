@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-100/80 font-sans dark:bg-gray-900">
-      <div className="container py-8 max-w-7xl mx-auto">
+    <footer className="bg-blue-100/80 font-sans ">
+      <div className="container px-2 py-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-2">
             <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">
@@ -14,7 +14,7 @@ const Footer = () => {
               <input
                 id="email"
                 type="text"
-                className="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                className="px-4 py-2 text-gray-700 bg-white border rounded-md  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
                 placeholder="Email Address"
               />
 
@@ -61,9 +61,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="my-4 border-gray-200 md:my-4 dark:border-gray-700 h-2" />
+        <hr className="my-4 border-gray-200 md:my-4  h-2" />
 
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-center mx-auto sm:justify-between">
           <div className="flex flex-1 gap-4 hover:cursor-pointer">
             <Image
               src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg"

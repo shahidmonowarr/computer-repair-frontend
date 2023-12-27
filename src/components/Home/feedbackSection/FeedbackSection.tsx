@@ -25,16 +25,16 @@ const FeedbackSection = () => {
 
   return (
     <section className="text-gray-600 body-font relative  ">
-      <h2 className="mb-6 text-center text-3xl font-bold">
+      <h2 className="mt-20 text-center text-3xl font-bold">
         Give Us Your Feedback
       </h2>
       <Form submitHandler={handleSubmit}>
-        <div className=" px-5 py-12 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
+        <div className=" px-5 py-8 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
           <div>
             <Image src={feedbackBro} alt="feedback" />
           </div>
 
-          <div className=" bg-white rounded-lg p-6 flex flex-col  z-5 shadow-md">
+          <div className=" bg-white rounded-lg p-6 flex flex-col  z-3 shadow-md">
             <h2 className="text-gray-900 text-xl mb-1 font-medium title-font">
               Feedback
             </h2>
@@ -53,7 +53,7 @@ const FeedbackSection = () => {
               name="feedbackDescription"
               label="Message"
               placeholder="Enter Message"
-              rows={10}
+              rows={8}
             />
 
             <Button

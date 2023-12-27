@@ -53,16 +53,28 @@ const ServiceSection = () => {
                 slidesPerView: 1,
                 spaceBetween: 5,
               },
-              768: {
+              480: {
                 slidesPerView: 2,
-                spaceBetween: 5,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 10,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 5,
+                spaceBetween: 10,
+              },
+              1280: {
+                slidesPerView: 5,
+                spaceBetween: 10,
               },
             }}
-            className="mySwiper"
+            className="mySwiper mx-2"
           >
             {serviceData?.map((service: any, index: number) => (
               <SwiperSlide key={service.serviceId}>

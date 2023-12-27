@@ -106,7 +106,7 @@ const Header = () => {
             />
           </Link>
           {/* NavData */}
-          <div className="md:flex hidden gap-3 w-full justify-between ">
+          <div className="md:flex hidden gap-3 w-full justify-between font-bold">
             {NavbarData?.map((nav: IHeaderType, i: number) => (
               <NavbarMenu key={i} navbarData={nav} />
             ))}

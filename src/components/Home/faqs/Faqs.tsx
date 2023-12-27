@@ -45,7 +45,7 @@ const Faqs = () => {
         </h2>
       </div>
       <div className="mb-5 flex flex-wrap">
-        <div className="w-full items-center px-4 mx-auto lg:w-1/2">
+        <div className="w-full items-center px-4 pt-5 rounded-md mx-auto bg-slate-300">
           <Collapse
             bordered={true}
             defaultActiveKey={["1"]}

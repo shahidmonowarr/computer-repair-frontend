@@ -14,7 +14,7 @@ const BlogSection = () => {
   return (
     <div className=" pb-[100px]">
       <h2 className="mb-12 text-center text-3xl font-bold">
-        Find the best blog for you
+        Find The Best Blog For You
       </h2>
 
       <div className="">

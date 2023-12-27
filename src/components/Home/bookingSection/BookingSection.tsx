@@ -80,7 +80,7 @@ const BookingSection = () => {
       </h2>
 
       <Form submitHandler={bookingOnSubmit}>
-        <div className=" px-5 py-12 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
+        <div className=" px-5 grid grid-cols-1 md:grid-cols-2 gap-2 mx-auto">
           <div className=" bg-white rounded-lg my-auto p-6 flex flex-col  z-5 shadow-md">
             <h2 className="text-gray-900 text-xl mb-1 font-medium title-font">
               FillUp The Form

@@ -2,6 +2,7 @@
 
 import LoginImage from "@/assets/images/login.jpg";
 import InputField from "@/components/InputField/InputField";
+import CopyToClipboard from "@/components/ui/CopyToClipboard";
 import { useUserLoginMutation } from "@/redux/features/auth/authApi";
 import { storeUserInfo } from "@/services/auth.service";
 
@@ -49,9 +50,46 @@ const LoginPage = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="w-full md:w-1/2 py-10 px-5 md:px-10"
           >
-            <div className="text-center mb-10">
-              <h1 className="font-bold text-3xl text-gray-900">Login</h1>
-              <p>Enter your information to Login</p>
+            <div className="text-center mb-5">
+              <h1 className="font-bold text-3xl mb-2 text-gray-900">Login</h1>
+              <p>Login Credential For Super Admin & Admin</p>
+              <div className="">
+                <div className="relative bg-white border border-gray-400 rounded-lg">
+                  <div className="text-gray-800 text-sm">
+                    <div className="text-sm text-gray-600 hover:bg-[#f3f4f9] block px-4 py-2 duration-300">
+                      <h4>Super Admin</h4>
+                      <p className="relative">
+                        Email: superadmin@gmail.com
+                        <span className="absolute right-0 top-[6px] hover:text-blue-500">
+                          <CopyToClipboard text="superadmin@gmail.com" />
+                        </span>
+                      </p>
+                      <p className="relative">
+                        Password: 12345678
+                        <span className="absolute right-0 top-[6px] hover:text-blue-500">
+                          <CopyToClipboard text="12345678" />
+                        </span>
+                      </p>
+                    </div>
+                    <div className="text-gray-600 hover:bg-[#f3f4f9] block px-4 py-2 duration-300">
+                      <h4>Admin</h4>
+                      <p className="relative">
+                        Email: admin@gmail.com
+                        <span className="absolute right-0 top-[6px] hover:text-blue-500">
+                          <CopyToClipboard text="admin@gmail.com" />
+                        </span>
+                      </p>
+                      <p className="relative">
+                        Password: 12345678
+                        <span className="absolute right-0 top-[6px] hover:text-blue-500">
+                          <CopyToClipboard text="12345678" />
+                        </span>
+                      </p>
+                    </div>
+                    <div className="absolute top-0 left-[48%] md:left-[20px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-3 h-3 bg-white border-l border-t border-gray-400"></div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>

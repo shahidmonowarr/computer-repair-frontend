@@ -26,7 +26,7 @@ const NavbarMenu = ({ navbarData, customClass }: NavbarMenuProps) => {
         <Dropdown
           menu={{ items }}
           placement="bottomRight"
-          className="text-gray-400 hover:text-gray-700"
+          className="text-gray-700 hover:text-blue-700"
         >
           <span className="flex gap-1 items-center">
             {navbarData.name}
@@ -59,7 +59,7 @@ const NavbarMenu = ({ navbarData, customClass }: NavbarMenuProps) => {
           </span>
         </Dropdown>
       ) : (
-        <p className="text-gray-400 hover:text-gray-700 text-[16px]">
+        <p className="text-gray-700 hover:text-blue-700 text-[16px]">
           {navbarData.name}
         </p>
       )}
