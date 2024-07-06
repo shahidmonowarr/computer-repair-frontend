@@ -82,7 +82,6 @@ const ServicesPage = () => {
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
-          <Button onClick={() => refetch()}>Reset</Button> 
         </div>
 
       <Spin spinning={isLoading && !isError} tip="Loading Services...">

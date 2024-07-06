@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 
-const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+const ServiceLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default HomeLayout;
+export default ServiceLayout;

@@ -1,10 +1,9 @@
-"use client";
-
 import { IBlogType } from "@/types";
 import { EyeOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next"
 
 type IType = {
   blog: IBlogType;

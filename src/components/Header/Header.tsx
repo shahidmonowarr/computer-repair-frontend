@@ -55,7 +55,7 @@ const Header = () => {
     },
     {
       name: "Blogs",
-      link: "/blogs",
+      link: "/blogspage",
     },
   ];
   const [userLogged, setUserLogged] = useState(false);
