@@ -3,7 +3,7 @@
 import ServiceCard from "@/components/ServiceCard/ServiceCard";
 import { useGetAllServicesQuery } from "@/redux/features/serviceApi";
 import { Spin } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,9 +27,12 @@ const ServiceSection = () => {
     isLoading,
     isError,
     error,
+    refetch
   } = useGetAllServicesQuery({ ...query });
 
-  console.log(error);
+  useEffect(() => {
+    refetch();
+  }, [sortBy, sortOrder, searchTerm]);
 
   return (
     <div className=" pb-[100px]">

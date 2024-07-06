@@ -51,7 +51,7 @@ const Header = () => {
     },
     {
       name: "Services",
-      link: "/services",
+      link: "/servicespage",
     },
     {
       name: "Blogs",
